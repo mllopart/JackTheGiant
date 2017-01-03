@@ -25,6 +25,7 @@ class MainMenuScene: SKScene {
         soundBtn = self.childNode(withName: "Music") as? SKSpriteNode!;
         quitGameBtn = self.childNode(withName: "Quit") as? SKSpriteNode!;
         
+        
     }
     
     
@@ -33,6 +34,7 @@ class MainMenuScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self);
             let nodeAtLocation = self.atPoint(location);
+            GameManager.instance.gameStartedFromMainMenu = true;
             
             if nodeAtLocation == highscoreBtn {
                 print("Highscore");
@@ -49,7 +51,7 @@ class MainMenuScene: SKScene {
                 self.view?.presentScene(scene!, transition: SKTransition.doorsOpenVertical(withDuration: 1));
             }
             
-            if nodeAtLocation == startGameBtn {
+            if nodeAtLocation == startGameBtn {                
                 let scene = GameplayScene(fileNamed: "GameplayScene");
                 scene!.scaleMode = .aspectFill
                 self.view?.presentScene(scene!);

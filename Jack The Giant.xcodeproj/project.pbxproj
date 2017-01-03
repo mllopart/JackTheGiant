@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A1F020B1E1B223000AC5842 /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1F020A1E1B223000AC5842 /* GameplayController.swift */; };
+		6A1F020D1E1B259B00AC5842 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1F020C1E1B259B00AC5842 /* GameManager.swift */; };
 		6A343D3B1E11D218007E5ADB /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A343D3A1E11D218007E5ADB /* MainMenu.sks */; };
 		6A90B6751E0750E50024283E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A90B6741E0750E50024283E /* AppDelegate.swift */; };
 		6A90B6771E0750E50024283E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6A90B6761E0750E50024283E /* GameScene.sks */; };
@@ -90,6 +92,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A1F020A1E1B223000AC5842 /* GameplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayController.swift; sourceTree = "<group>"; };
+		6A1F020C1E1B259B00AC5842 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		6A343D3A1E11D218007E5ADB /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		6A90B6711E0750E50024283E /* Jack The Giant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jack The Giant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A90B6741E0750E50024283E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +190,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A1F02091E1B221900AC5842 /* Game Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6A1F020A1E1B223000AC5842 /* GameplayController.swift */,
+				6A1F020C1E1B259B00AC5842 /* GameManager.swift */,
+			);
+			name = "Game Controller";
+			sourceTree = "<group>";
+		};
 		6A90B6681E0750E50024283E = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +392,7 @@
 		6AA6D1A21E0758AE00CCCA5C /* Game Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6A1F02091E1B221900AC5842 /* Game Controller */,
 				6AA6DC941E11D6FA005F1C67 /* Cloud */,
 				6AA6DC931E11D6F1005F1C67 /* Background */,
 				6AA6DC921E11D6E4005F1C67 /* Player */,
@@ -624,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AA6D1A51E0758EE00CCCA5C /* GameplayScene.swift in Sources */,
+				6A1F020D1E1B259B00AC5842 /* GameManager.swift in Sources */,
 				6A90B67B1E0750E50024283E /* GameScene.swift in Sources */,
 				6A90B67D1E0750E50024283E /* GameViewController.swift in Sources */,
 				6AA6DC9C1E11DEF1005F1C67 /* HighscoreScene.swift in Sources */,
@@ -632,6 +647,7 @@
 				6A90B6751E0750E50024283E /* AppDelegate.swift in Sources */,
 				6AA6DC961E11D713005F1C67 /* MainMenuScene.swift in Sources */,
 				6AC9FDC51E1094840048C236 /* BGClass.swift in Sources */,
+				6A1F020B1E1B223000AC5842 /* GameplayController.swift in Sources */,
 				6AA6DC9E1E11E016005F1C67 /* OptionScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
