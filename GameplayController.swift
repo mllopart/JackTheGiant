@@ -32,7 +32,7 @@ class GameplayController {
             
             score = 0;
             coinScore = 0;
-            lifes = 2;
+            lifes = 1;
             
             scoreText?.text = "\(score!)";
             coinText?.text = "x\(coinScore!)";
@@ -47,7 +47,28 @@ class GameplayController {
             lifeText?.text = "x\(lifes!)";
         }
         
+    }
+    
+    func incScore() {
+        score! += 1;
         
+        scoreText?.text = "\(score!)";
+    }
+    
+    func incCoin() {
+        coinScore! += 1;
+        score! += 200;
         
+        scoreText?.text = "\(score!)";
+        coinText?.text = "x\(coinScore!)";
+    }
+    
+    func incLife() {
+        
+        lifes! += 1;
+        score! += 300;
+        
+        scoreText?.text = "\(score!)";
+        lifeText?.text = "x\(lifes!)";
     }
 }

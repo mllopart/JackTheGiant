@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameplayScene: SKScene {
+class GameplayScene: SKScene , SKPhysicsContactDelegate {
     
     var mainCamera: SKCameraNode?;
     
@@ -40,6 +40,31 @@ class GameplayScene: SKScene {
         manageBackgrounds();
         managePlayer();
         createNewClouds();
+        player?.setScore();
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody = SKPhysicsBody();
+        var secondBody = SKPhysicsBody();
+        
+        if contact.bodyA.node?.name == "Player" {
+            firstBody = contact.bodyA;
+            secondBody = contact.bodyB;
+        } else {
+            firstBody = contact.bodyB;
+            secondBody = contact.bodyA;
+        }
+        
+        if firstBody.node?.name == "Player" && secondBody.node?.name == "Life" {
+            GameplayController.instance.incLife();
+            secondBody.node?.removeFromParent();
+        } else if firstBody.node?.name == "Player" && secondBody.node?.name == "Coin" {
+            GameplayController.instance.incCoin();
+            secondBody.node?.removeFromParent();
+        } else if firstBody.node?.name == "Player" && secondBody.node?.name == "Dark Cloud" {
+            //death
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,7 +111,9 @@ class GameplayScene: SKScene {
     }
     
     func initializeVars () {
-        print ("GameplayScene loaded");
+//        print ("GameplayScene loaded");
+        
+        physicsWorld.contactDelegate = self;
         
         getBackgrounds();
         

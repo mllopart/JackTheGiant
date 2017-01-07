@@ -20,7 +20,7 @@ class Player: SKSpriteNode {
     private var playerAnimation = [SKTexture]();
     private var animatePlayerAction = SKAction();
     private let lTimePerFrame = 0.08;
-    
+    private var lastY = CGFloat();
     
     func initializePlayerAndAnimations() {
         textureAtlas = SKTextureAtlas(named: "Player.atlas");
@@ -39,6 +39,8 @@ class Player: SKSpriteNode {
         self.physicsBody?.categoryBitMask = ColliderType.Player;
         self.physicsBody?.collisionBitMask = ColliderType.Cloud;
         self.physicsBody?.contactTestBitMask = ColliderType.DarkCloudAndCollectables;
+        
+        lastY = self.position.y;
         
     }
     
@@ -66,6 +68,13 @@ class Player: SKSpriteNode {
             self.position.x -= 7;
         } else {
             self.position.x += 7;
+        }
+    }
+    
+    func setScore () {
+        if self.position.y < lastY {
+            GameplayController.instance.incScore();
+            lastY = self.position.y;
         }
     }
     
