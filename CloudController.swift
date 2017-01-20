@@ -96,7 +96,7 @@ class CloudsController {
         return clouds;
     }
     
-    func arrangeCloudsInScene(scene:SKScene, distanceBetweenClouds: CGFloat, center: CGFloat, minX: CGFloat, maxX: CGFloat, initialClouds: Bool) {
+    func arrangeCloudsInScene(scene:SKScene, distanceBetweenClouds: CGFloat, center: CGFloat, minX: CGFloat, maxX: CGFloat, initialClouds: Bool, player:Player) {
         
         var clouds = createClouds();
         var positionY = CGFloat();
@@ -107,6 +107,7 @@ class CloudsController {
                 //shuffle the cloud array
                 clouds = shuffle(cloudsArray: clouds);
             }
+            
             
             positionY = center - 100;
             
@@ -145,7 +146,13 @@ class CloudsController {
             positionY -= distanceBetweenClouds;
             lastCloudPositionY = positionY;
             
+            if initialClouds {
+                player.position = CGPoint(x: clouds[0].position.x, y: clouds[0].position.y+9);
+            }
+            
         }
+        
+        
         
         
     }

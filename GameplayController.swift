@@ -19,9 +19,9 @@ class GameplayController {
     var coinText: SKLabelNode?;
     var lifeText: SKLabelNode?;
     
-    var score: Int?;
-    var coinScore: Int?;
-    var lifes: Int?;
+    var score: Int32?;
+    var coinScore: Int32?;
+    var lifes: Int32?;
     
     
     func initializeVariables () {
@@ -30,9 +30,9 @@ class GameplayController {
             
             GameManager.instance.gameStartedFromMainMenu = false;
             
-            score = 0;
+            score = -1;
             coinScore = 0;
-            lifes = 1;
+            lifes = 2;
             
             scoreText?.text = "\(score!)";
             coinText?.text = "x\(coinScore!)";

@@ -10,10 +10,33 @@ import SpriteKit
 
 class HighscoreScene: SKScene {
     
+    private var highScoreLbl: SKLabelNode?;
+    private var coinLbl: SKLabelNode?;
+    
+    
     override func didMove(to view: SKView) {
-        
+        getReference();
+        setScore();
     }
     
+    private func getReference() {
+        highScoreLbl = self.childNode(withName: "Score Label") as? SKLabelNode;
+        coinLbl = self.childNode(withName: "Coin Label") as? SKLabelNode;
+    }
+    
+    private func setScore() {
+        
+        if GameManager.instance.getEasyDifficulty() == true {
+            highScoreLbl?.text = String(GameManager.instance.getEasyDifficultyScore());
+            coinLbl?.text = String(GameManager.instance.getEasyDifficultyScoreCoins());
+        } else if GameManager.instance.getMediumDifficulty() == true {
+            highScoreLbl?.text = String(GameManager.instance.getMediumDifficultyScore());
+            coinLbl?.text = String(GameManager.instance.getMediumDifficultyScoreCoins());
+        } else if GameManager.instance.getHardDifficulty() == true {
+            highScoreLbl?.text = String(GameManager.instance.getHardDifficultyScore());
+            coinLbl?.text = String(GameManager.instance.getHardDifficultyScoreCoins());
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         

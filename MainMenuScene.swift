@@ -15,9 +15,12 @@ class MainMenuScene: SKScene {
     var startGameBtn: SKSpriteNode?;
     var quitGameBtn: SKSpriteNode?;
     var soundBtn: SKSpriteNode?;
+    private let musicOn = SKTexture(imageNamed: "Music On Button");
+    private let musicOff = SKTexture(imageNamed: "Music Off Button");
     
     
     override func didMove(to view: SKView) {
+        GameManager.instance.initializeGameData();
         
         highscoreBtn = self.childNode(withName: "Highscore") as? SKSpriteNode!;
         optionsBtn = self.childNode(withName: "Options") as? SKSpriteNode!;
@@ -25,6 +28,8 @@ class MainMenuScene: SKScene {
         soundBtn = self.childNode(withName: "Music") as? SKSpriteNode!;
         quitGameBtn = self.childNode(withName: "Quit") as? SKSpriteNode!;
         
+        
+        setMusic();
         
     }
     
@@ -58,7 +63,7 @@ class MainMenuScene: SKScene {
             }
             
             if nodeAtLocation == soundBtn {
-                print("Sound");
+                handleMusicButton()
             }
             
             if nodeAtLocation == quitGameBtn {
@@ -67,6 +72,33 @@ class MainMenuScene: SKScene {
             
         }
         
+    }
+    
+    
+    private func setMusic() {
+        if GameManager.instance.getIsMusicOn() {
+            
+            if AudioManager.instance.isAudioPlayerInitialized() {
+                AudioManager.instance.playBGMusic();
+                soundBtn?.texture = musicOff;
+            }
+        } else {
+            soundBtn?.texture = musicOn;
+        }
+    }
+    
+    private func handleMusicButton() {
+        if GameManager.instance.getIsMusicOn() {
+            AudioManager.instance.stopBGMusic();
+            GameManager.instance.setIsMusicOn(isMusicOn: false);
+            soundBtn?.texture = musicOn;
+        } else {
+            AudioManager.instance.playBGMusic();
+            GameManager.instance.setIsMusicOn(isMusicOn: true);
+            soundBtn?.texture = musicOff;
+        }
+        
+        GameManager.instance.saveData();
     }
 
 }
