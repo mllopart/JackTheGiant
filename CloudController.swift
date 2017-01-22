@@ -119,6 +119,7 @@ class CloudsController {
         
         for index in 0...clouds.count - 1 {
             
+            
             var  randomX = CGFloat();
             
             if random == 0 {
@@ -146,10 +147,11 @@ class CloudsController {
             positionY -= distanceBetweenClouds;
             lastCloudPositionY = positionY;
             
-            if initialClouds {
-                player.position = CGPoint(x: clouds[0].position.x, y: clouds[0].position.y+9);
-            }
             
+        }
+        
+        if initialClouds {
+            player.position = CGPoint(x: clouds[0].position.x, y: clouds[0].position.y + 9);
         }
         
         

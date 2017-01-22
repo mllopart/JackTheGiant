@@ -62,16 +62,16 @@ class GameplayScene: SKScene , SKPhysicsContactDelegate {
         }
         
         if firstBody.node?.name == "Player" && secondBody.node?.name == "Life" {
-            if GameManager.instance.getIsMusicOn() {
+            //if GameManager.instance.getIsMusicOn() {
                 self.run(SKAction.playSoundFileNamed("Life Sound.wav", waitForCompletion: false));
-            }
+            //}
             
             GameplayController.instance.incLife();
             secondBody.node?.removeFromParent();
         } else if firstBody.node?.name == "Player" && secondBody.node?.name == "Coin" {
-            if GameManager.instance.getIsMusicOn() {
+            //if GameManager.instance.getIsMusicOn() {
                 self.run(SKAction.playSoundFileNamed("Coin Sound.wav", waitForCompletion: false));
-            }
+            //}
             GameplayController.instance.incCoin();
             secondBody.node?.removeFromParent();
         } else if firstBody.node?.name == "Player" && secondBody.node?.name == "Dark Cloud" {

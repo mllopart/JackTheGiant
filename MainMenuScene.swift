@@ -67,7 +67,7 @@ class MainMenuScene: SKScene {
             }
             
             if nodeAtLocation == quitGameBtn {
-                print("Quit");
+                exit(0);
             }
             
         }
